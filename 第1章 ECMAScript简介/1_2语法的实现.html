@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="username">
+    <!-- <div style="width: 100px;height: 100px;"></div> -->
+    <script>
+        //1.2.2语句
+        // 在计算机编程中，语句(statement)是命令式编程语言的语法单元，以表示欲指示计算机进行的一连串动作。
+        // JavaScript编程语言的语句大致分为简单语句(simple statement)和复合语句(compount statement)两种形式
+        //1.简单语句
+        //简单语句的末尾应该加上分号，例如：
+        //(1)
+        let v01,v02;
+        //变量v01与v02的声明。
+        
+        //(2)
+        var list01 = ['apple','banana','cherry'];
+        //数组变量list01的声明与数据设置。
+
+        //(3)
+        profile = {name:'Alex',gender:'male',age:'40'};
+        //对象变量profile的数据设置。
+
+        //(4)
+        document.writeln('<h3>world peace</h3>');
+        //写入带有文本"world peace"的h3元素实例到当前网页里。
+
+        //(5)
+        confirm('Are you sure to delete it?')
+        //在网页上，显示带有“Are you sure to delete it?”信息并带有确认
+        //按钮和取消按钮的模式对话框。
+
+        //(6)
+        let username = document.getElementById('username')
+        username.style.color = 'RoyalBlue'
+        //设置id为username元素实例的颜色为宝蓝色
+
+        //(7)
+        for(let i=0;i<5;i++){
+            if(i==3)break
+            console.log(i)
+        }
+        console.log(typeof new Date().getDay())
+        switch (new Date().getDay()) {
+            case 0:
+                console.log("星期天")
+                break;
+            case 1:
+                console.log("星期一")
+                break;
+            case 2:
+                console.log("星期二")
+                break;
+            case 3:
+                console.log("星期三")
+                break;
+            case 4:
+                console.log("星期四")
+                break;
+            case 5:
+                console.log("星期五")
+                break; 
+            case 6:
+                console.log("星期六")
+                break;
+        }
+        //中断循环语句(loop statement),或确认切换语句(swithch statement)的分支(branch)。
+
+        //(8)
+        for(let i=0;i<5;i++){
+            if(i==3)continue
+            console.log(i)
+        }
+        //在循环语句中，终止当前的循环，并立即进行下一次的循环
+
+        //(10)
+        let a = 10
+        // debugger
+        console.log(a)
+        //设置调试断点(breakpoint),以暂停后续源代码的执行，并启动调试机制。
+
+        //(11)
+        "use strict";
+        //限制以严格模式执行源代码。
+
+        //(12)
+        function A(){
+            return 20
+            console.log(15)
+        }
+        console.log(A())
+        //终止函数的执行，并返回变量result的数据
+        
+    </script>
+</body>
+</html>
