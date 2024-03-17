@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body id="username">
+    <button id="send_button">你好</button>
     <!-- <div style="width: 100px;height: 100px;"></div> -->
     <script>
         //1.2.2语句
@@ -95,6 +96,69 @@
         console.log(A())
         //终止函数的执行，并返回变量result的数据
         
+        //2.复合语句
+        //复合语句大都带有一对大括号，例如：
+        //(1)
+        let result = 0;
+        alert("you're welcome!")
+        {
+            let num01 = 75,num02 = 64;
+            result = num01+num02
+            console.log(result)
+        }
+        console.log(result)
+        //在前述大括号中的源代码，连同大括号在内，可被称为复合语句。其中，变量num01与num02只有在大括号里才允许被访问
+
+        //(2)
+        let send_button = document.getElementById('send_button')
+        with(send_button.style){
+            color = 'Gold';
+            backgroundColor = 'DodgerBlue';
+            fontSize = '1.5em';
+        }
+        // with复合语句包含一对大括号，并且可以简化对象实例属性的访问语法。在此，【send_button.style.color='Gold';】的
+        //语句，在复合语句【with(send_button.style)】的大括号里，可被简化为【color='Gold';】。
+        
+        // (3)
+        let score = 30
+        if(score>60){
+            passer_count++;
+            saying = 'You have passed!';
+        }
+        // if条件复合语句可以包含一对大括号，当小括号里的条件【(score>=60)】为真时，大括号里的各语句就会被执行
+
+        //(4)
+        let count = 0
+        let sum = 0
+        for(let i = 0;i<10;i++){
+            count++;
+            sum+=count*i**2;
+        }
+        //for循环复合语句可包含一对大括号，并借助小括号【(let i =0;i<10;i++)】中的3个子语句，
+        //使得大括号中的各语句，可被迭代而执行10次。
+
+        //(5)
+        let choice = 2;
+        let grade = undefined;
+        switch(choice){
+            case 1:
+                grade = 'A+';
+                break;
+            case 2:
+                grade = 'A';
+                break;
+            case 3:
+                grade = 'B';
+                break;
+            case 4:
+                grade = 'C';
+                break;
+            default:
+                grade = '@_@';
+        }
+        console.log(grade)
+        //switch 复合语句包含一对大括号，并通过小括号【(choice)】中变量choice的数值，来决定并执行大括号
+        //中的特定case或default分支的子语句。
     </script>
 </body>
 </html>
