@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //1.2.4 子程序
+        //在计算机编程中，子程序(subroutine)也可被称为函数(function)或方法(method),
+        //即是可重复被调用(call/invocation),以重新执行特定任务的一连串程序指令单元，进而节省开发与维护
+        //的成本，并提高质量与可靠性。
+
+        //JavaScript编程语言中的子程序，主要被称为函数，可通过以下语法来加以定义。
+        //(1)
+        function sphere(r){
+            values={};
+            values.volume = 4/3*Math.PI*Math.pow(r,3);
+            values.surface_area = 4*Math.PI*r*r;
+
+            return values;
+        }
+        //上述源代码式定义函数的标准语法。通过调用【sphere(10)】,可计算并返回【内含半径为10的球体积和球体表面积】
+        //相关数据的对象实例。
+        //(2)
+        display = function(){
+            console.log('Variable-type displaying.');
+        }
+        //上述源代码是所谓的函数表达式，使得变量display具备函数的特征。通过调用【display()】,
+        //可在网页浏览器的调试工具【console】面板中，显示【Variable-type displaying】的信息。
+        //(3)
+        sphere_volume = r => {return 4/3*Math.PI *Math.pow(r,3)};
+        //上述源代码中的简洁语法，等同于定义了函数sphere_valume()。通过调用【sphere_volume(30)】,
+        //可计算并返回半径为30的球体积的结果值。
+
+        //1.2.5 注释
+        //在源代码里，注释(comment)是用来辅助程序员，加以理解各源代码片段的意义和用途，却不会被计算机加以执行的文本
+        //JavaScript编程语言的注释方式有如下两种。
+        // (1)在注释文本的行首，加上紧连的两个斜杠符号【//】。
+        /* (2)在注释文本的开头，加上紧连的斜杠符号与星号【/*】，并在注释文本的末尾，加上紧连的星号与斜杠符号【】
+        */
+
+        // 1.2.6 关键字
+        // 在计算机编程语言中，被称为保留字(reserved word)的关键字(keyword),不能或不应该作为常量、变量、属性、函数/方法的标识符(identifier)/名称(name)
+        //的词汇。JavaScript编程语言的关键字
+        //关键字
+        //abstract arguments await booolean break
+        //byte case catch char class
+        //const continue debugger default delete
+        //do double else enum eval
+        //export extends false final finally
+        //float for function goto if
+        //implements import in Infinity instaceof
+        //int interface let lang NaN
+        //native new null package private
+        //protected public return short static
+        //super switch synchronized this throw
+        //throws transient true try typeof
+        //undefined var void volatile while
+        //with yield
+    </script>
+</body>
+</html>

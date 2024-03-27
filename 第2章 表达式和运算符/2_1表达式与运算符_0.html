@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //编程语言中的表达式主要是由操作数(operand)和(operator)构成。其中，操作数可以是常量(constant)、
+        //变量(variable)、子表达式(subsidiary expression)或是特定函数(function)的返回值(return value)。
+
+        // 2.1.1 常量(ES6)
+        //在各种编程语言中，常量(constant)是指固定而明确的数据。例如：
+        //(1)整数(integer)常量：25、770、-110。
+        //(2)浮点数(floating-point number)常量：25.625、-23.71、Math.PI、Math.LN2、Math.SQRT2。
+        //(3)字符串(string)的字面量(literal):'Alex',"Happily Ever After"、'=.=+'。
+        //(4)正则表达式(regular expression)的字面量：/\w+\s*.(\w\d+){1,3}/g、/^\w{2}\d{5}\s*$/。
+        //(5)布尔(boolean)常量：true,false。
+        //(6)原始(primitive)常量：NaN、null、undefined。
+        //(7)编程人员在源码中，自行声明(declare/declaration)的常量，可简称为自声明常量。
+        //例如在源代码片段【const num01 = 157,num02 = 268;】中，num01和num02即是自声明常量。
+
+        //2.1.2 变量(ES6)
+        //在各种编程语言中，变量(variable)的标识符(identifier)/名称(name)用来识别特定存储位置中的可变
+        //数据。所谓可变，是指在运行期间，其数据是可被变更的。
+        //在JavaScript语言中，变量的作用范围(scope)大致可如下区分：
+        //全局(global)范围
+        //局部(local)范围
+        //块(block)范围
+
+        let start = 123;
+        const STEP = 3;
+        var result = 0;
+
+        function some_steps(step_count = 1){
+            var output;
+            output = start + STEP * step_count;
+            console.log(`in function:start = ${start},STRP = ${STEP},result = ${result}`);
+            console.log(`in function: output = ${output}\n\n`)
+            return output;
+        }
+        result = some_steps(5);
+        // console.log(`outer: start = ${start},STRP = ${STEP},result = ${result}`);
+        // console.log(`outer: output = ${output}\n\n`)
+        //因为访问了函数some_steps()内的局部范围的变量output,所以会显示出错误信息【Uncaught ReferenceError:output is not defined】。
+        
+        //关于块范围的理解
+        {
+            let height = 100;
+            {
+                let height = 4;
+                {
+                    let height = 3;
+                    {
+                        let height = 1;
+                        console.log('height of a desk =',height)
+                    }
+                    console.log('height of a desk =',height)
+                }
+                console.log('height of a desk =',height)
+            }
+            console.log('height of a desk =',height)
+        }
+        console.log('');
+        for(var m = 1;m<10;m++){
+            for(var n = 1;n<10;n++){
+                console.log(`kernel count = (${m},${n})`)
+            }
+            console.log(`kernel count = (${m},${n})\n\n`)
+        }
+        console.log(`outer count = (${m},${n})`);
+        console.log('');
+
+        for(let i = 1;i<10;i++){
+            for(let j = 1;j<10;j++){
+                console.log(`kernel count = (${i},${j})`);
+            }
+            //未捕获的错误
+            // console.log(`inner count = (${i},${j})\n\n`);
+        }
+        //测试此源代码片段，可看出通过关键字let声明的变量m与n,只能被访问于for循环语句大括号内的块范围里。这也就意味着，关键字let声明的，
+        // 可以成为块范围的变量。复原最后一行成为注释的语句，并进行测试之后，可在网页浏览器的调试工具【console】面板中，看到因为访问不到块范围变量i与j的错误信息。
+
+        //2.1.3 子表达式
+        //一般而言，特定表达式可在分割成为子表达式(subsidiary expression).
+        var r = 10;
+        //此语句内含左侧表达式。
+
+        var volume = 4/3*Math.PI*Math.pow(r,3);
+        //此主要表达式内含如下子表达式：
+        //左侧表达式：【var volume=】和【Math.】
+        //算术表达式：【4/3*Math.PI*Math.pow(r,3)】
+        //主要表达式：【Math.PI】和【Math.pow(r,3)】
+
+        circumference = r =>2 * Math.PI * r;
+        //此主要表达式内含如下子表达式:
+        //左侧表达式：【circumference =】和【Math.】
+        //箭头函数表达式：【r =>2 * Math.PI * r】
+        //算术表达式：【2 * Math.PI * r】
+        //主要表达式：【Math.PI】
+
+        //2.1.4 函数的返回值
+        //在多种编程语言中，关键字return开头的语句，除了会终止当前函数内源代码的执行，并返回调用函数
+        //的子表达式之外，亦会使得前述子表达式，被取代成为返回值(return value),成为原始表达式的操作数。
+        
+        //2.2 运算符
+        //各种计算机编程语言均支持一系列的运算符，并和参与其中的操作数，构成特定形态的表达式，以满足计算机各种复杂的演算、分析与归纳。
+
+        //JavaScript的运算符
+        //运算符分类
+        //加法运算符(addition operator)或一元正号运算符(unary plus operator) +
+        //减法运算符(subtraction operator)或一元负号运算符(unary negation operator) -
+        //乘法运算符(multiplication operator) *
+        //除法运算符(division operator) /
+        //求余运算符(remainder operator) %
+        //求幂运算符(exponentiation operator) **
+        //递增运算符(increment operator) ++
+        //递减运算符(decrement operator) --
+
+        //2.2.2 赋值运算符
+        //JavaScript编程语言的赋值运算符(assignment operator)存在基本形式的等号【=】
+        //JavaScript的赋值运算符
+        //赋值运算符 用法 含义
+        // = a=b
+        // += a+=b a=a+b
+        // -= a-=b a=a-b
+        // *= a*=b a=a*b
+        // /= a/=b a=a/b
+        // %= a%=b a=a%b
+        // <<= a<<=b a=a<<b
+        // >>= a>>=b a=a>>b
+        // >>>= a>>>=b a=a>>>b
+        // &= a&=b a=a&b
+        // ^= a^=b a=a^b
+        // |= a|=b a=a|b
+
+        let a = 18,b = 5,c = 2;
+        let result1 = 0;
+        //这两个语句声明了具有初始数据的变量a、b、c与result1
+
+        result1 = a+b+c;
+        console.log(result1)
+        //此语句里的赋值运算符【=】，使得变量result1的数值，成为变量a、b、c各数值的总和
+
+        a+=b
+        console.log(a)
+        //此语句里的赋值运算符【+=】，使得变量a的数值，成为【变量a本身的数值加上变量b的数值】的结果值。
+
+        a-=b
+        console.log(a)
+        //此语句里的赋值运算符【-=】，使得变量a的数值，成为【变量a本身的数值减去变量b的数值】的结果值。
+
+        a*=b
+        console.log(a)
+        //此语句里的赋值运算符【*=】,使得变量a的数值，成为【变量a本身的数值乘以变量b的数值】的结果值。
+
+        a/=b
+        console.log(a)
+        //此语句里的赋值运算符【/=】，使得变量a的数值，成为【变量a本身的数值除以变量b的数值】
+        //的结果值。
+
+        a%=b
+        console.log(a)
+        //此语句里的赋值运算符【%=】，使得变量a的数值，成为【变量a本身的数值除以变量b的数值】的余数。
+
+        b**=c
+        console.log(b)
+        //此语句里的赋值运算符【**=】，使得变量b的数值，成为【变量b本身数值的c幂次】的结果。
+
+        b<<=c
+        console.log(b)
+        //此语句里的赋值运算符【<<=】,使得变量b的二进制数值，向左偏移变量c所代表的比特位(bit)个数。
+
+        b>>=c
+        console.log(b)
+        // 此语句里的赋值运算符【>>=】,使得变量b的二进制数值，在保留正负号的前提下，向右偏移变量c所代表的比特位
+        //(bit)个数。所谓保留正负号就是：
+        //若该二进制数值为负值，则其最左侧的符号位(sign bit)是1，并在向右偏移的同时，保持其符号位为1。
+        //若该二进制数值为正值，则其最左侧的符号位是0，并在向右偏移的同时，保持其符号位为0。
+        
+        b>>>=c
+        console.log(b)
+        //此语句里的赋值运算符【>>>=】,使得变量b的数值，成为【变量b的二进制数值，向右偏移变量c所代表的比特位(bit),
+        //并在其左侧补上相同个数的二进制0】之后的结果值。
+        //在其左侧补上相同个数的二进制0，也就意味着，一开始无论其最左侧的符号位是0(正值)
+        //或是1(负值)，后续皆在向右偏移的同时，保持符号位成为0。
+
+
+        b&=c
+        console.log(b)
+        //此语句里的赋值运算符【&=】,使得变量b的数值，成为【变量b本身的二进制数值与变量c的二进制数值，进行按位与(bitwise and)运算】之后的结果值。
+
+        b^=c
+        //当两个二进制数不同才为1
+        console.log(b)
+        //此语句里的赋值运算符【^=】,使得变量b得数值，成为【变量b的二进制数值与变量c的二进制数值，进行按位异或(bitwise exclusive or)运算】之后的结果值。
+
+        b|=c
+        console.log(b)
+        //此语句里的赋值运算符【|=】,使得变量b的数值，成为【变量b的二进制数值与变量c的二进制数值。进行按位或(bitwise or)运算】之后的结果值。
+    </script>
+</body>
+</html>

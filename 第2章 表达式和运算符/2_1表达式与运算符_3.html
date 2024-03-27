@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //2.2.9 扩展运算符(ES6)
+        //由3个英文句点【...】构成的扩展运算符(spread operator),可被用来【卸除】
+        //特定数组的中括号或者特定对象的大括号。
+
+        var greetings = ['Hi','Howdy','Hey,man','G\'day mate'];
+        //此语句声明了初始数据为数组实例的变量greetings
+
+        var extended_greetings = ['Long time no see','Nice to see you','Hiya',...greetings];
+        //此语句声明了初始数据为另一数组实例的变量extended_greetings。扩展运算符【...】使得变量extended_greetings
+        //的数组实例，带有变量greetings的数组实例中的所有元素。
+        console.log(extended_greetings);
+        console.log('');
+
+        var number_texts = ['one','two','three']
+        // 此语句亦声明了初始数据为另一数组实例的变量number_texts
+        var number_digits = '123';
+        //此语句声明了初始数据为字符串'123'的变量number_digits
+
+        var numbers = [...number_texts,...number_digits]
+        //扩展运算符【...】使得变量numbers的初始数据，成为合并【变量number_texts与number_digits的个别数组实例】的新数组实例，
+        //进而使得变量numbers的数据，成为数组实例['one','two','three',"1","2","3"]。
+
+        console.log(numbers);
+        console.log('');
+
+        let birthday = new Date(1999,11,25,20,30);
+        let now = new Date();
+
+        console.log(birthday.toLocaleString);
+        console.log(now.toLocaleString);
+        console.log('');
+
+        let arr01 = [1,2,3];
+        let arr02 = [10,20,30];
+        let arr03 = [...arr01,...arr02,100,200,300];
+
+        let obj01 = {name:'orange',amount:10}
+        let obj02 = {name:'durian',amount:5,origin:'Thai'}
+        let obj03 = {...obj01,...obj02};
+        console.log(arr03)
+        console.log(obj03)
+        console.log('')
+
+        //2.2.10 逗号运算符
+        //逗号运算符(comma operator)主要用来并联多个赋值表达式或操作数。
+        let a = 11,b=21,c=31;
+        let d,e,f;
+        
+        d = e = a + b,f = b + c;
+        console.log(d,e,f);
+
+        //2.2.11 删除运算符
+        //JavaScript语言中的删除运算符(delete operator)，仅用来删除特定对象实例的特定属性。
+
+        let person = {name:'Ivory',gender:'female',age:'30'};
+        let colors = ['RoyalBlue','GreenYellow','Gold','Cyan'];
+
+        var num01 = 123;
+        let num02 = 456;
+        num03 = 789;
+        //无论有无通过关键字var或let进行声明，这3个语句分别声明了初始数据为不同整数的变量num01、num02与num03。
+
+        console.log(num01,num02,num03);
+        console.log('');
+
+        delete person.name;
+        //此语句使用关键字delete,并配合点运算符【.】,可删除变量person的对象实例的属性name。
+        delete colors[1];
+        //此语句使用关键字delete,并配合中括号运算符[],可在变量colors数组实例中，仅删除索引值为1的元素
+        //数据'GreenYellow',但是此元素占用的缓存空间，仍然保留在其数组实例中。
+        delete num01;
+        delete num02;
+        delete num03;
+        //通过这3个语句，试图删除变量num01、num02与num03;然而实际上，仅有未通过var或let关键字，加以声明的变量
+        //num03,可以被成功删除。
+
+        console.log(person.name);
+        //【person.name】会返回undefined,即代表变量person的属性name,已被删除了。
+        console.log(person);
+        //此语句只会产生{gender:"female",age:"30"}的信息。由此可见，属性name和其数据'Ivory'已经被删除了。
+        console.log('');
+
+        console.log(colors[1]);
+        //返回undefined,即代表变量colors中的索引值为1的数据，已被清除了。
+        console.log(colors);
+        //colors[1]被清除后，后面元素的索引没有变化。
+        console.log('');
+
+        console.log(num01);
+        console.log(num02);
+        //借助var或let关键字声明的非对象变量，不能被delete关键字删除
+        // console.log(num03);
+        //执行此语句时，会产生【num03 is not defined 参考错误(reference error)】的信息。由此可知，变量num03确实被删除了。
+
+    </script>
+</body>
+</html>

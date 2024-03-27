@@ -105,6 +105,138 @@
         //在各行中，字符串片段的最后一个字符串必须就是反斜杠【\】
         //不可以再有包括空白字符在内的其他字符。
 
+        //前述源代码被执行之后，变量sentence的数据会是字符串"Alice really lovingly loves lovely beloved of Jason very much."
+
+        // 3.关系与逻辑表达式(relational and logical expression)
+        //(1)
+        let x = 2
+        let y = 3
+        console.log(x>y)
+        //检验若变量x的数值大于y的数值，则返回布尔值true，否则false
+
+        //(2)
+        let z = 4
+        let k = x<=y && x<=z
+        console.log(k)
+        //检验若变量x的数值同时小于或等于变量y和z的数值，则返回布尔值true
+
+        //(3)
+        let a = 10
+        a>0 || b>0 || c>0
+        //检验若变量a的数值大于0、变量b的数值大于0、或是变量c的数值大于0，则返回
+        //true.
+
+        //(4)
+        v01 = 40
+        v02 = 50
+        v03 = 90
+        console.log(!(v01 > 60 || v02 >= 90) && v03 >=80)
+        //检验若【并非变量v01的数值大于60，或是变量v02的数值大于或等于90】，并且【变量v03的数值大于或等于80】
+        //则返回布尔值true
+
+        //(5)
+        let name = 'admin'
+        let password = '90asff_'
+        let result = name == 'admin' && /^\w{6,}$/.test(password)
+        console.log(result)
+        //检验若变量name的数据等于字符串字面量"admin",并且变量password的数据是由【0-9】、
+        //【大小写a-z】与【下划线_】所构成的最少6个字符的字符串，则返回布尔值true
+
+        // 4.主要表达式(primary expression)
+        // (1)
+        let circle_area = function(r){
+            let result;
+            result = Math.PI*r**2
+            console.log(`The circle area of radius ${r}=${result}`)
+            return result;
+        }
+        console.log(circle_area(2))
+        //在所谓的函数表达式(function expression)中，通过关键字
+        //function,定义匿名函数(anonymous function),并以变量的名称circle_area,作为匿名函数的别名(alias)。
+
+        // (2)
+        let Cubic = class{
+            constructor(l,w,h){
+                this.length = l;
+                this.width = w;
+                this.height = h;
+            }
+            volume(l = this.length,w = this.width,h = this.height){
+                return l*w*h;
+            }
+            surface_area(l = this.length,w = this.width,h = this.height){
+                return 2*(l*w+w*h+h*l)
+            }
+        }
+        //在所谓的类表达式(class expression)中，通过关键字class,定义匿名类(anonymous class),
+        // 并以变量的名称Cubic作为匿名类的别名。
+
+        // (3)
+        let number_list = [15,30,75,90,180];
+        console.log(number_list[2]);
+        number_list[5] = 770;
+        console.log(number_list);
+        //前三个语句均可被视为主要表达式。在等号右侧，没有变量名称的一对中括号，是用来定义数组实例[15,30,75,90,180]，并赋给等号左侧的数组，
+        //number_list.在等号左侧，变量名称衔接的一对中括号，则用来访问数组变量number_list中特定索引值(2与5)对应的元素值(75与770)。
+
+        //(4)
+        var user_input = 'zl = xl ^ 2 + y1 * 3 + 6';
+        var pattern = /[a-zA-Z]\d/g;
+        var matches = user_input.match(pattern);
+        console.log(matches);
+        //这4个语句均可被视为主要表达式。在此，通过一对斜杠符号【/】，创建用来匹配特定模式
+        //【由字母开头，后接一个数字的文本】的正则表达式字面量(regular-expression literal)
+        //【/[a-zA-Z]\d/g】,并赋给等号左侧的变量pattern。
+
+        //5.箭头函数表达式(arrow function expression)
+        //箭头函数表达式存在如下几种形式。
+        // (1)
+        // (参数列)=>{...};
+        //通过带有参数列的一对小括号，衔接代表箭头符号的【=>】，与内含主体源代码的一对大括号，
+        //一定义没有名称，但可带有多个参数的箭头函数(arrow function)。
+
+        //(2)
+        // 单一参数名称=>{...};
+        //通过单一参数，衔接代表参数箭头符号的【=>】,与内含主体源代码的一对大括号，以定义没有名称、仅有一个参数的箭头函数。
+        
+        // (3)
+        //单一参数名称=>单一语句;
+        //通过单一参数，衔接代表箭头符号的【=>】,和单一语句的主体源代码，以定义没有名称、仅有一个参数和语句的箭头函数。
+
+        // 6.左侧表达式(left-hand expression)
+        // (1)
+        let profile = {};
+        profile.name = 'Jasper';
+        //通过点号【.】,将整数值28赋给变量profile的实例属性name。
+
+        //(2)
+        profile['age'] = 28;
+        //借助一对中括号，将整数值28赋给变量profile的实例属性age。
+
+        //(3)
+        //super(10,15);
+        //通过关键字super与一对小括号，调用父类(parent class)的构造函数(constructor),并传入
+        // 参数值10和15。
+
+        //(4)
+        // super.cylinder_volume(10,15);
+        //借助关键字super、点号与一对小括号，调用在父类中作为成员函数(member function)的函数cylinder_volume(),
+        //并传入参数值10和15。
+
+        //(5)
+        x = 5
+        x = x + 3
+        //在等号的左侧，设置变量x,并将变量x的数值加上3的结果值，赋给变量x本身。
+
+        //(6)
+        let [b,c] = [7,9];
+        console.log(b,c)
+        //在等号的左侧，编写内含变量b与c的一对中括号，并将左侧另一对中括号里的整数值7与9，分别赋值给变量b,c
+        
+        //(7)
+        let [c1,d] = [b+2,c+3];
+        console.log(c1,d)
+        //在等号的左侧，编写内含变量c1和d的一对中括号，并将左侧另一对中括号里的a+3与b+7的结果值，分别赋给变量a与b。
     </script>
 </body>
 </html>

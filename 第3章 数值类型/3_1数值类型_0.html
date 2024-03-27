@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //JavaScript语言的数值，不仅包括整数(integer),也包含带有小数部分的浮点数(floating-point number)。
+        //3.1.1 2^n进制的字面量(ES6)
+        //2^n进制主要是指二进制、八进制与十六进制。在JavaScript语言中，可通过2^n进制的字面量(literal),来表示2^n进制的数字常量(number constant)/数值(number value)。
+
+        var number01 = 111;
+        //111代表十进制的数值111。
+        var number02 = parseInt('111',16);
+        //parseInt('111',16)返回十六进制数值111所对应的十进制数值273。
+        var number03 = 0x111;
+        //0x111代表十六进制的数值111。因此，变量number03的初始数值，会成为十六进制数值111所对应的十进制数值273。
+    
+        //严格模式下报错
+        // var number04 = 0111;
+        var number05 = parseInt('111',8);
+        //parseInt('111',8)会返回八进制数值111所对应的十进制数值73。
+        var number06 = 0o111;
+        //0o111代表八进制的数值111。因此，变量number06的初始数值，会成为八进制数值111所对应的十进制数值73。
+        var number07 = parseInt('111',2);
+        //parseInt('111',2)会返回二进制数值111所对应的十进制数值7。
+        var number08 = 0b111;
+        //Ob111代表二进制的数值111。因此，变量number08的初始数值，会成为二进制数值111所对应的十进制数值7。
+        console.log(number01);
+        console.log(number02);
+        console.log(number03);
+        console.log(number05);
+        console.log(number06);
+        console.log(number07);
+        console.log(number08);
+
+        //3.1.2 数值的比较(ES6)
+        //要比较两个数值类型的操作数(operand)的数值(number value)是相等、不相等、大于或小于的关系，必须
+        //通过带有特定比较运算符的表达式来实现。
+
+        console.log(3 + 0.1416 === 3.1416);
+        //在这两个语句中的比较表达式里，比较运算符【===】两侧操作数的数，被判断为均相等，以及其数据类型均为浮点数(floating-point number)。
+        console.log(0.5 + 0.25 === 0.75);
+        console.log('');
+        console.log(0.1 + 0.02 === 0.12);
+        //计算机的浮点数表示法，无法完整表示大部分的浮点数，所以计算机进行浮点数的运算时，常常会出现小数部分的截断误差(truncation error)。
+        //看似简单浮点数的比较运算，对计算机来说，反而是困难的任务。
+
+        a = 0.1;
+        b = 0.02;
+        c = 0.12;
+        console.log(a+b === c);
+        //由于截断误差返回值为false
+        console.log(Math.abs(a + b - c)<Number.EPSILON);
+        //【Number.EPSILON】是内置对象number中的常量属性EPSILON，用来表示浮点数运算之后，
+        //可被容忍的截断误差值。因此，欲正确比较浮点数，表达式【a+b===c】应该被改写成为【Math.abs(a+b-c)<Number.EPSILON】
+
+        // 3.1.3 数值的正负符号(ES6)
+        //在JavaScript语言中，数值可以是负数，正数或零值还可以分为正零和负零。
+        console.log(Math.sign(0))
+        //Math.sign(0)的返回值为0
+        console.log(Math.sign(-0))
+        //Math.sign(-0)的返回值为-0
+        console.log(Math.sign(123))
+        //Math.sign(123)的返回值为1
+        console.log(Math.sign(-123));
+        //Math.sign(-123)的返回值为-1
+        console.log(Math.sign(null))
+        //Math.sign(null)的返回值为0
+        console.log(Math.sign(NaN))
+        //Math.sign(NaN)的返回值为NaN
+        console.log(Math.sign('Hello'))
+        //Math.sign(NaN)的返回值为NaN
+        console.log(Math.sign(undefined))
+        //Math.sign(NaN)的返回值为NaN
+
+        //函数Math.sign(特定变量名称)的返回值，可用来判断特定变量的如下特征：
+        //  其返回值为0，代表特定变量的数值亦为0。
+        //  其返回值为-0，代表特定变量的数值亦为-0。
+        //  其返回值为1，代表特定变量的数值为正数，例如123、23.8、1250.75。
+        //  其返回值为-1，代表特定变量的数值为负数，例如-123、-23.8、-1250.75。
+        //  其返回值为NaN(not a number),代表特定变量的数据，无法被转换成为数值，例如NaN、undefined、'Hello'、'125a'。
+
+        //3.1.4 数值的截断(ES6)
+        //数值的截断(truncation),是指对于特定浮点数，先进行无条件或四舍五入的数值修约，再去除其小数，转换成为整数的过程。
+        v01 = 12.5;
+        v02 = 12.3;
+        v03 = 0.56;
+        v04 = -0.83;
+
+        console.log(parseInt(v01));
+        //调用内置函数parseInt(v01),会返回变量v01的数值12.5的整数部分12。
+        console.log(Math.trunc(v01));
+        //调用内置函数Math.trunc(v01),会返回变量v01的数值12.5的整数部分12。
+        console.log(Math.floor(v01));
+        //调用内置函数Math.floor(v01),会返回小于但接近变量v01的数值12.5的整数值12。
+        console.log(Math.round(v01));
+        //调用内置函数Math.round(v01),会返回对变量v01的数值12.5进行四舍五入之后的整数值13。
+        console.log(Math.ceil(v01));
+        //调用内置函数Math.ceil(v01),会返回大于但接近变量v01的数值12.5的整数值13。
+        console.log('');
+
+        console.log(parseInt(v02));
+        console.log(Math.trunc(v02));
+        console.log(Math.floor(v02));
+        console.log(Math.round(v02));
+        console.log(Math.ceil(v02));
+        console.log('');
+
+        console.log(parseInt(v03));
+        console.log(Math.trunc(v03));
+        console.log(Math.floor(v03));
+        console.log(Math.round(v03));
+        console.log(Math.ceil(v03));
+        console.log('');
+
+        console.log(parseInt(v04));
+        console.log(Math.trunc(v04));
+        console.log(Math.floor(v04));
+        console.log(Math.round(v04));
+        console.log(Math.ceil(v04));
+        console.log('');
+
+        console.log(0 === -0)
+        //【0===-0】返回布尔值true,所以0与-0的数值相等、数据类型相同
+        console.log(+0 === -0)
+        //【+0===-0】返回布尔值true,所以+0与-0的数值相等、数据类型相同
+
+    </script>
+</body>
+</html>

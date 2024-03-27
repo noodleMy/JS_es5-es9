@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //2.2.7 按位运算符
+        let num01 = 56,num02 = 77;
+        let num03 = 124,num04 = -3;
+
+        console.log(num01.toString(2));
+        console.log(num02.toString(2));
+        console.log(num03.toString(2));
+        //这3个语句的【.toString(2)】,可分别将变量num01,num02与num03的整数值，转换成为字符串类型
+        //的二进制数码。
+        console.log('');
+
+        console.log(num01 == 0b111000);
+        //【num01 == 0b111000】可用来判断变量num01的数值，是否等于二进制整数【111000】。在此，
+        //其返回true。加上【0b】在二进制数码的左侧，可使得此代码被视为二进制数值。
+        //在此亦可得知，浏览器中的JavaScript引擎，仍然将最左比特位(left-most bit)为1的数值，
+        //视为正值(positive value)。因此，若要变更成为负值(negative value),则修改为【-0b111000】
+
+        console.log(num01 == 0b00111000);
+        //【num01 == 0b00111000】可用来判断变量num01的数值，是否等于二进制整数【00111000】。在此，其返回true.
+        //浏览器中的JavaScript引擎将【0b00111000】与【0b111000】,视为相同的二进制数值。
+        console.log('');
+
+        console.log(num02 == 0b1001101);
+        console.log(num02 == 0b01001101);
+        console.log('');
+
+        console.log(num03 == 0b1111100);
+        console.log(num03 == 0b01111100);
+        console.log('');
+
+        result = num01 & num02;
+        //【num01 & num02】可得到【变量num01与num02的二进制数据，进行按位和(bitwise and)运算】之后的结果值
+        console.log(result);
+        console.log(result.toString(2));
+        console.log('')
+
+        result = num01 | num02;
+        //【num01 | num02】可得到【变量num01与num02的二进制数据，进行按位或(bitwise or)运算】之后的结果值
+        console.log(result);
+        console.log(result.toString(2));
+        console.log('')
+
+        result = num01 ^ num02;
+        //【num01 ^ num02】可得到【变量num01与num02的二进制数据，进行按位异或(bitwise exclusive or)运算】之后的结果值
+        console.log(result);
+        console.log(result.toString(2));
+        console.log('')
+
+        result = ~num03;
+        //【~num03】会得到【变量num03的二进制数据，进行2的补码(two's complement)】之后的结果值。
+        console.log(result);
+        console.log(result.toString(2));
+        console.log('')
+
+        result = num03 << 1;
+        //【num03<<1】会得出【变量num03的2进位数据，向左偏移1个比特位】之后的结果值。
+        console.log(result);
+        console.log(result.toString(2));
+        console.log('')
+
+        result = num03 >> 1;
+        //【num03>>1】会得出【变量num03的2进位数据，向右偏移1个比特位】之后的结果值。
+        console.log(result);
+        console.log(result.toString(2));
+        console.log('');
+
+        result = num04 >>> 1;
+        //【num04>>>1】会得出【变量num04的2进位数据，向右偏移1个比特位的同时，在其最左侧的符号位(sign bit),填入0】之后的结果值。
+        console.log(num04.toString(2));
+        console.log(result);
+        console.log((2**31-1)-1);
+        //【(2**31-1)-1】会评估出(2**31)-2
+        console.log(result.toString(2));
+        
+        //2.2.8 括号运算符
+        //括号运算符包含：
+        //小括号/圆括号(parentheses,round brackets)运算符():除了用于变更特定表达式的运算优先级之外，亦被用于
+        //if,switch,for,while等语句和函数的调用。
+        //中括号/方括号(brackets,square brackets)运算符[]:主要用于数组(array)或字符串(string)相关的定义和访问。
+        //大括号/花括号(braces,curly brackets)运算符{}:用于语句的分组(grouping)、函数的主体构造，以及对象(object)
+        //的定义。
+        let a = 10,b = 5,c = 3;
+        result = 0;
+        //这两个语句声明了具有初始数值的变量a,b,c和result。
+        result = a-b*c;
+        console.log(result);
+
+        result = (a-b)*c;
+        console.log(result);
+
+        result = a ** c ** 2;
+        console.log(result);
+        //由于求幂运算符**具有右结合的特征，所以表达式【a**c**2】会先被计算出【c**2】的结果值，再计算整个表达式的结果值。
+
+        result = (a ** c)**2;
+        console.log(result);
+        console.log("");
+
+        let now = new Date();
+        console.log(typeof Date());//string
+        //获取当前日期与时间字符串
+        console.log(now);
+        //获取具有数据为【内含当前日期与时间】的Date对象实例。
+        console.log(now.toLocaleString());
+        console.log('');
+
+        let obj = new Object();
+        obj.name = 'Jasper';
+        obj.gender = 'male';
+        obj.age = 28;
+        console.log(obj);
+        console.log('');
+
+        function display(choice,message){
+            if(choice == 1)alert(message);
+            else if(choice == 2)confirm(message);
+        }
+
+        display(1,'Hello,Earth!');
+        display(2,'Hello,are you human?');
+
+        let fruits = ['apple','banana','cherry','durian'];
+        console.log(fruits[1]);
+
+
+    </script>
+</body>
+</html>

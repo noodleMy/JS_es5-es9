@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //2.2.3 比较运算符
+        //在各编程语言中，比较运算符(comparison operator)是用来决定其两侧操作数相等或不相等的关系。
+        //JavaScript编程语言的比较运算符
+        // 比较运算符 用法 含义 判断后的返回值
+        // == a==b 判断变量a与b的数值，是否相等
+        // === a===b 判断变量a与b的数值，是否相等，以及其数据类型是否也相等
+        // != a!=b 判断变量a与b的数值，受否不相等
+        // !== a!==b 判断变量a与b的数值，是否并不相等，或者其数据类型是否也不同
+        // > a>b 判断变量a的数值，是否大于变量b的数值
+        // >= a>=b 判断变量a的数值，是否大于或者等于变量b的数值
+        // < a<b 判断变量a的数值，是否小于变量b的数值
+        // <= a<=b 判断变量a的数值，是否小于或者等于变量b的数值
+        //为真，返回true
+        //为假，返回false
+
+        let v01 = 100,v02 = 250,v03 = 500;
+        //此语句声明了初始数值为整数常量的变量v01、v02和v03。
+    
+        let s01 = '100',s02 = '250',s03 = '500'
+        //此语句声明了初始数据为字符串字面量的变量v01、v02和v03。
+
+        console.log(v01 == s01);//true
+        console.log(v01 === s01);//false
+        console.log(v02 > s01);//true
+        console.log(v02 < s03);//true
+        console.log(v03 >= s03);//true
+        console.log(v03 <= s03);//true
+
+        //2.2.4 逻辑运算符
+        //在各种编程语言中，逻辑运算符(logical operator)主要用来串联带有比较含义的表达式。
+        //JavaScript编程语言的逻辑运算符
+        // 逻辑运算符 用法 含义 判断后的返回值
+        // && e1&&e2 判断表达式e1与e2,是否皆为真
+        // || e1||e2 判断表达式e1与e2,是否其中之一为真
+        // ! !e1 判断表达式e1,是否并非为真
+        // in e1 in e2 判断e1所代表的属性名称，是否存在于e2所代表的对象实例中
+        //为真，返回true 为假，返回false
+
+        v01 = 10;
+        v02 = 50;
+        v03 = 60;
+        let values = [10,20,30,40,50];
+        let person = {name:'Gary',gender:'male',age:'25'}
+
+        //result = true && true;
+        let result = v01<v02 && v02<v03
+        console.log(result)
+
+        //result = false || true;
+        result = v01 > v02 || v03 > v02;
+        console.log(result)
+
+        //result = !false;
+        result = !(v01>v02)
+        console.log(result)
+
+        result = 2 in values;
+        console.log(result)
+
+        result = 'round' in Math;
+        console.log(result)
+
+        result = 'gender' in person;
+        console.log(result)
+
+        // 2.2.5 条件运算符
+        // 从C语言开始，许多后继的编程语言，均支持条件运算符(conditionnal operator)/三元运算符(ternary operator),
+        // 并用来简化特定形式的if语句。
+
+        let score,passed;
+        score = 58;
+        passed = score >= 60 ? 'yes':'no'
+        console.log(passed)
+
+        score = 77;
+        passed = score >= 60 ? 'yes':'no'
+        console.log(passed)
+
+        // 2.2.6 类型运算符
+        // 类型运算符(typeof operator)用来返回特定操作数(operand)的数据类型(data type)。关于类型运算符的综合运用。
+        let num01 = 33,num02 = 1.414;
+        console.log(typeof num01);
+        console.log(typeof 33);
+        console.log(typeof num02);
+        console.log(typeof 1.414);
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'number'
+        console.log('')
+        
+        console.log(typeof Math.PI);
+        console.log(typeof NaN);
+        console.log(typeof Infinity);
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'number'
+        console.log('');
+
+        console.log(typeof '')
+        console.log(typeof "")
+        console.log(typeof "hello,earth!")
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'string'
+        console.log('')
+
+        console.log(typeof true)
+        console.log(typeof false)
+        console.log(typeof (num01>num02))
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'boolean'
+        console.log('')
+
+        console.log(typeof undefined)
+        console.log(typeof num03)
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'undefined'
+        console.log('')
+
+        console.log(typeof function(){})
+        console.log(typeof Array.isArray)
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'function'
+        console.log('')
+
+        console.log(typeof Object())
+        console.log(typeof new Object())
+        console.log(typeof {})
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'object'
+        console.log('')
+        
+        console.log(typeof Array())
+        console.log(typeof new Array())
+        console.log(typeof [])
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'object'
+        console.log('')
+
+        console.log(typeof null)
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'object'
+        console.log('')
+
+        console.log(typeof String('test'))
+        //内置对象String的构造函数String('test'),只会返回字符串'test'。因此，表达式【typeof String('test')】
+        //等同于获得字符串'test'的数据类型名称，在此为字符串'string'
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'string'
+        console.log(typeof new String('test'))
+        //内置对象String的构造函数String('test')会返回字符串'test'。在经过new关键字的处理，会返回内含字符串
+        //'test'的String对象实例。因此，表达式【typeof new String('test')】等同于获得String对象实例的数据类型名称。
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'object'
+        console.log('')
+
+        console.log(typeof Number(123))
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'number'
+        console.log(typeof new Number(123))
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'object'
+        console.log('')
+
+        console.log(typeof Date());
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'string'
+        console.log(typeof new Date());
+        //typeof ... 表达式会得出变量...的数据类型名称，在此为字符串'object'
+    </script>
+</body>
+</html>

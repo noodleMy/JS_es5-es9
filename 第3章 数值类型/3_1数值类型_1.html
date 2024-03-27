@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //3.1.5 数值的特殊格式(ECMA-402)
+        //在此，数值的特殊格式，是指千分位(thousands)或者货币(currency)形式的数值表示方式。
+        var nf_en = Intl.NumberFormat("en");
+        //Intl.NumberFormat对象的构造函数Intl.NumberFormat("en"),会返回【以字符串形式，表示英文(en,English)数值格式(number format)】的Intl.NumberFormat对象实例
+        var nf_de = Intl.NumberFormat("de");
+        //Intl.NumberFormat("de")会返回【以字符串形式，表示德文/德国(de,DENIC eG for Germany)数值格式】
+        //的Intl.NumberFormat对象实例。因此，后续源代码，可借助其数据为Intl.NumberFormat对象实例的变量nf_de,将特定数值，表示成为德文
+        //数值格式化之后的字符串。
+        var number01 = 2533591.8;
+        console.log(nf_en.format(number01));
+        //因为变量nf_en的数据为Intl.NumberFormat对象实例，所以存在可调用的函数format()。
+        //nf_enformat(number01)会返回【将变量number01的数值2533591.8，表示成为英文数值格式化】之后的字符串"2,533,591.8"。
+        console.log(nf_de.format(number01));
+        console.log('');
+
+        console.log(number01.toString());
+        //number01.toString()仅会返回【将变量number01的数值2533591.8，转换成为字符串】之后的"2533591.8"
+        console.log(number01.toLocaleString());
+        //number01.toLocaleString()会返回【将变量number01的数值2533591.8，比那是成为本地语言的数值格式化】之后的"2,533,591.8"。在此，本地语言为中文(cn,China)。
+        console.log('');
+
+        console.log(number01.toLocaleString('en'));
+        console.log(number01.toLocaleString('de'));
+        console.log('');
+
+        var cnf_cn = Intl.NumberFormat('cn',{style:'currency',currency:'cny'});
+        //Intl.NumberFormat对象的构造函数Intl.NumberFormat('cn',{style:'currency',currency:'cny'}),
+        //会返回【以字符串形式，表示中文/中国(cn,China)与人民币(cny,China Yuan)的数值格式】的Intl.NumberForma
+        //对象实例。后续源代码，可借助其数据为Intl.NumberFormat对象实例的变量cnf_cn,将特定数值，表示成为中文与人民币的数值格式化之后的字符串。
+        var cnf_jp = Intl.NumberFormat('jp',{style:'currency',currency:'jpy'});
+        var cnf_en = Intl.NumberFormat('en',{style:'currency',currency:'usd'});
+        var cnf_uk = Intl.NumberFormat('gb',{style:'currency',currency:'gbp'});
+        var cnf_de = Intl.NumberFormat('de',{style:'currency',currency:'eur'});
+
+        var price01 = 25324700.56;
+
+        console.log(cnf_cn.format(price01));
+        //因为变量cnf_cn是Intl.NumberFormat对象实例，所以存在可调用的函数format()。
+        //cnf_cn.format(price01)会返回【将变量price01的数值25324700.56，表示成为人民币数值格式化】之后
+        //的字符串"CN￥25,324,700,56"。
+        console.log(cnf_jp.format(price01));
+        console.log(cnf_en.format(price01));
+        console.log(cnf_uk.format(price01));
+        console.log(cnf_de.format(price01));
+
+        // 3.1.6 整数值的安全范围(ES6)
+        //JavaScript语言的整数值的安全范围是-(2^53-1)~+(2^53-1)。
+        //函数Number.isNaN(变量名称)的返回值，可用来判断特定变量的数值，是否并非一个数值(not a number):
+        //其返回为true,代表特定变量的数值，并不是一个数值。
+        //其返回为false,代表特定变量的数值，是一个数值。
+        
+        console.log(Number.isNaN(NaN))//返回true
+        console.log(Number.isNaN(123))//返回false
+        console.log(Number.isFinite(456))//返回true
+        //函数Number.isFinite(特定变量名称)的返回值，可用来判断特定变量的数值，是否为有限(finite)的数值：
+        //其返回为true,代表特定变量的数值，是计算机可明确表示的数值。
+        console.log(Number.isFinite(NaN))//返回false
+        console.log(Number.isFinite(Infinity))//返回false
+        console.log(Number.isFinite(-Infinity))//返回false
+        
+        console.log('');
+        //函数Number.isSafeInteger(特定变量名称)的返回值，可用来判断特定变量的数值，是否为IEEE-754所规定的安全范围-(2^53-1)~+(2^53-1)里的整数值:
+        //返回值为true,代表特定变量的数值，是安全范围内的整数值。
+        //返回值为false,代表特定变量的数值，并不是安全范围内的整数值。
+        console.log(Number.isSafeInteger(Math.pow(2,48)+100));
+        //Math.pow(2,48)+100的结果值为2^48+100。
+        //Number.isSafeInteger(Math.pow(2,48)+100)的返回值为true。
+        console.log(Number.isSafeInteger(Math.pow(2,53)-1));
+        //Math.pow(2,53)-1的结果值为2^53-1。
+        //Number.isSafeInteger(Math.pow(2,53)-1)的返回值为true。
+        console.log(Number.isSafeInteger(Math.pow(2,53)));
+        //false
+        console.log(Number.isSafeInteger(Math.pow(2,63)));
+        //false 2^63已经是超越安全范围的整数值。
+    </script>
+</body>
+</html>
