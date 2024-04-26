@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //3.2布尔类型
+        //JavaScript布尔(boolean)类型的数据，只存在布尔值false(假)和布尔值true(真)两个组合。
+        //其中，false代表假、否、非、不对、不是等不成立的含义(????)；true则代表真、对、是等成立的含义。
+        let passed = false,score = 0;
+        score = 80;
+        passed = score>60;
+        console.log(passed);
+        score = 55;
+        passed = score>60;
+        console.log(passed);
+        console.log('');
+        
+        let conversion;
+        conversion = Boolean(-10.8);
+        console.log(conversion);
+        conversion = Boolean(15.6);
+
+        console.log(conversion);
+        console.log('');
+
+        conversion = Boolean(0);
+        console.log(conversion);
+        conversion = Boolean(null);
+        console.log(conversion);
+        conversion = Boolean(false);
+        console.log(conversion);
+        conversion = Boolean('');
+        console.log(conversion);
+        conversion = Boolean(undefined);
+        console.log(conversion);
+        //在前段个语句中，无论是0，null,false,空字符串或undefined,均是具有零值含义的常量，
+        //经过构造函数Boolean()的处理之后，均会返回false。
+        console.log('');
+
+        conversion = new Boolean(-10.8);
+        console.log(conversion.valueOf());
+        conversion = new Boolean(15.6);
+        console.log(conversion.valueOf())
+        conversion = new Boolean(0);
+        console.log(conversion.valueOf());
+        //在前段各语句中，构造函数Boolean()左侧被衔接了关键字new,使得变量
+        //conversion的数据，成为内含布尔值true或false的Boolean对象实例。
+        //调用conversion.valueOf()函数，可返回变量conversion内含的布尔值true或false
+        // console.log({a:1}.valueOf())
+    </script>
+</body>
+</html>

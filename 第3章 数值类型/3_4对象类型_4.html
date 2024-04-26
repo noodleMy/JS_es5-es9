@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //对象(object)通过属性(property)和方法(method)/函数(function),模拟在真实世界中，
+        // 具有身份数据(identity data)和表现特征行为(characteristic behavior)的物体(object).关于对象类型的理解，
+        //可参考如下示例。
+        // let item01 = {}
+        let item01 = new Object();
+        //通过关键字new和Object对象的构造函数Object()的语法，可返回Object对象的空实例(empty instance),
+        //或称为空的Object对象实例。在此，【=new Object()】等同于【={}】的语法；而且
+        // 此语句声明了初始数据为空的Object对象实例的变量item01。
+        item01.name = 'Tablet PC';
+        item01.price = 1000;
+        item01.origin = 'China';
+        item01['manufacture date'] = '2018/12/15';
+        item01['color'] = 'RoyalBlue';
+        item01[''] = 'secret data...';
+        //和衔接点运算符【.】比起来，衔接中括号运算符[]的方式，可创建具有如下特殊名称的属性：
+        //1.带有空格(space)字符的属性名称，例如上方的['manufacture date']
+        //2.空(empty)的属性名称，例如[''] 
+        console.log(item01);
+        console.log(item01['']);
+        console.log(item01.color);
+        console.log(item01['manufacure date']);
+        console.log(item01.price);
+
+        item01.price = 900;
+        item01['color'] = 'Gold';
+        console.log(item01);
+
+    </script>
+</body>
+</html>

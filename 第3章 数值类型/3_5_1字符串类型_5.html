@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            // 3.5 字符串类型
+            //字符串(string)是具有一串字符(character)的文本数据。在各种应用程序的画面当中，
+            //显示给用户观看的文本，即是持续有多个字符串，拼凑而成的产物。
+
+            //3.5.1 一般字符串
+            //在javascript语言中，字符串的字面量(literal)均以【内含一串字符】的一对单引号或双引号来表示。
+            // 关于一般字符串的运用，请看下面的示例。
+            let sentence = 'hi,\n\tlong time no see!\nhow are you today?\n\nBest Regards,\nAlex';
+            console.log(sentence);
+            //此语句声明了初始数据为字符串的变量sentence.在此字符串中，存在多个换行(new line)字符 '\n'
+            //以及间隔至多如同8个空格的制表(tab)字符 '\t'。
+            sentence = "Limit '3' days and \"5\" persons."
+            //容纳字符串的一对双引号【""】或单引号【''】,不可以冲突于其内部的双引号或单引号！其内部发生冲突的引号左侧，必须衔接反斜杠(back slash)字符才行
+            console.log(sentence)
+
+            sentence = '\\It costs \'370\'dollars.\\'
+            console.log(sentence)
+
+            sentence = 'Alex lovingly loves '+'lovely beloved of '+'Daisy.';
+            console.log(sentence)
+
+            sentence = 'Alex lovingly loves \
+            lovely beloved of \
+            Daisy.';
+            //此语句亦被分成3行，在等号右侧，借助反斜杠字符，串接字符串的各个片段。
+            //欲使用此法，在各个反斜杠字符的右侧，不可再加上包括空格(space)在内的任何字符。
+            console.log(sentence);
+            console.log(sentence[0]);
+            console.log(sentence[1]);
+            console.log(sentence[2]);
+            console.log(sentence[3]);
+            console.log('');
+
+            console.log(sentence.charAt(0));
+            console.log(sentence.charAt(1));
+            console.log(sentence.charAt(2));
+            console.log(sentence.charAt(3));
+
+            //3.5.2格式化字符串(es6)
+            //在javascript语言中，所谓的格式化字符串(formatting string)的正式名称为模板字面量(template literal),
+            // 可用来嵌入待评估的表达式。当这些表达式被评估完成而返回特定数据时，格式化字符串才能被确认最终的模样。
+            //关于格式化字符串的运用，可参考如下示例。
+
+            var users = [
+                {name:'j',age:'33',gender:'male'},
+                {name:'je',age:'27',gender:'female'},
+                {name:'Daisy',age:'33',gender:'female'},
+                {name:'sean',age:'24',gender:'male'}
+            ]
+
+            var nations = ['china','canada','america','new zeland'];
+
+            var daysamount = 5;
+
+            var flight_message = `${users[1].name}decides to flight to after ${daysamount}days.`;
+            console.log(flight_message);
+
+            flight_message = `${users[3].name} decides to flight to ${nations[2]} after ${daysamount} days.`
+            console.log(flight_message);
+
+            var string01 = 'hello\nEarth!';
+            var string02 = `hello\nEarth!`;
+            var string03 = String.raw `Hello\nEarth!`;
+            //String.raw 保留其中各字符的原始编码，并声明了初始数据为原始(raw)字符串的变量string03。也就是说，
+            //在字符串里的【\n】,已经被视为一般的字符【\】与【n】,而不再具有换行(new line)的特性。
+            //raw()明明是一个函数，在此却不能衔接一对小括号，而是衔接一对反引号，以实现出一个原始字符串
+            console.log(string01);
+            console.log(string02);
+            console.log(string03);
+
+            number_digits = '1 2 3 4 5 6 7';
+
+            string04 = String.raw({raw:'a b c d e f g'},...number_digits)
+            //语句会返回交叉分组之后的字符串"a1 b2 c3 d4 e5 f6 g7"
+            //事实上输出的是a1  b2  c3  d4  e5  f6  g
+            string05 = String.raw({raw:'a b c d e f g'},'1',' ','2',' ','3',' ','4',' ','5',' ','6',' ','7')
+            console.log(string04)
+            console.log(string05)
+    </script>
+</body>
+</html>

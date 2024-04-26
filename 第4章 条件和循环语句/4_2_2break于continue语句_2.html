@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //4.2.3 break与continue语句
+        //在循环语句中，关键字break加上分号而形成的break语句【break】,可用来终止循环语句的执行；
+        //关键字continue加上分号而形成的continue语句【continue;】,则可用来直接跳至循环于循环语句，
+        //的下一次迭代动作。
+
+        //statements-of-break-and-continue.js
+        let weekday = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+        let message = 'The working days of this week:';
+
+        let bnum = 3 + parseInt(4 * Math.random());
+
+        let cnum01 = parseInt(3 * Math.random());
+
+        let cnum02 = 3 + parseInt(4 * Math.random());
+
+        for (let i = 0;i<weekday.length;i++){
+            if(i == bnum)break;
+            message+=weekday[i]+', ';
+        }
+
+        message = message.slice(0,-2);
+        console.log(message)
+        message = 'Cannot have day-off on: ';
+        for(let i = 0;i<weekday.length;i++){
+            if(i==cnum01||i==cnum02)continue;
+            message+=weekday[i]+',';
+        }
+        message = message.slice(0,-2);
+        console.log(message);
+    </script>
+</body>
+</html>

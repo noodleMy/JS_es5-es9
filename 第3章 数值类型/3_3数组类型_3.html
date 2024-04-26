@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //3.3 数组类型
+        //数组(array)是用来表示一组【具有各自数据】的元素。然而，就JavaScript语言来说，其数组实例的数据类型(data type)
+        //为对象类型。数组实例中各元素的数据，可以同时存在数值，布尔值，字符串，对象，甚至是子数组！关于数组类型的综合运用，可参考如下示例。
+        let numbers = [520,530,1314,2013,2014];
+        let profile = ['Tommy','male',33,[180,72]];
+        let newone = new Array(6);
+        //会返回内含6个空元素的数组实例。此语句声明了初始数据为内含6个空元素的数组实例的变量newone。
+
+        console.log(numbers);
+        console.log(numbers[2]);
+
+        numbers[1] = 2591.8;
+
+        console.log(numbers);
+        console.log(numbers.length);
+        console.log('');
+
+        console.log(profile);
+        console.log(profile[0]);
+        console.log(profile[2]);
+        console.log(profile[3][0]);
+        console.log(profile[3][1]);
+
+        profile[3][1] = 70;
+        
+        console.log(profile);
+        console.log(profile.length);
+        console.log(profile[3].lenght);
+
+        console.log(numbers[numbers.length]);
+        console.log(profile[profile.length]);
+        console.log('');
+        console.log(newone[0]);
+        console.log(newone[newone.length]);
+    </script>
+</body>
+</html>

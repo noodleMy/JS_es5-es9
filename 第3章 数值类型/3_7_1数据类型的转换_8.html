@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //3.7 数据类型的转换(es6)
+        //对于各编程语言来说，特定变量在不同的时间点上，可被赋予不同类型的数据!在JavaScript
+        //引擎中，通过自动转换机制或者一些内置函数，可使得特定变量得数据，从原来的数据类型，转换成为
+        //新的数据类型。
+        //最常见得数据类型得转换，莫过于【其他数据->字符串】和【字符串->数值】。关于数据类型的转换的综合运用，可参考如下示例。
+
+        //data-type-conversions.js
+        let digital_string = ' 123 ';
+        result = Number(digital_string);
+        //通过内置的Number对象的构造函数Number(),将变量digital_string的数据字符串' 123',
+        //转换成十进制整数值123.在转换过程中，所有的空格(space)字符皆会被过滤掉。
+        console.log(result)
+
+        digital_string = ' 0o123 ';
+        result = Number(digital_string);
+        //' 0o123'先视为成八进制整数码123，在转换成为等价的十进制整数值83.
+        console.log(result);
+
+        digital_string = '0x123 ';
+        result = Number(digital_string);
+        //'0x123 '先视为十六进制整数码123，在转换成为等价的十进制整数值291
+        console.log(result);
+
+        result = parseInt(digital_string);
+        console.log(result);
+
+        result = Math.round(digital_string);
+        console.log(result);
+        //上面那两个皆能将字符串'0x123 ',转换成为等价的十进制整数值291
+        console.log('');
+
+        digital_string = '35.62';
+        result = Math.floor(digital_string);
+        console.log(result);
+
+        digital_string = '28.2';
+        result = Math.ceil(digital_string);
+        console.log(result);
+
+        digital_string = '12.5';
+        result = Math.round(digital_string);
+        console.log(result);
+
+        let value = 53.8125;
+        result = value.toString(2);
+        //将Number类型的十进制码转换成二进制的字符串
+        console.log(result);
+
+        result = value.toString(8);
+        console.log(result);
+
+        result = value.toString(16);
+        console.log(result);
+    </script>
+</body>
+</html>

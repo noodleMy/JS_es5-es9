@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //3.6 集合与地图类型
+        //对JavaScript语言来说，集合(set)与地图(map)主要可用来简化编程的负担，是从ECMAScript
+        //2015(ES6)版本开始，才具有的数据类型。
+
+        //3.6.1集合类型(ES6)
+        //集合(set)内含其数据均不重复的元素，和数学理论中的集合，有着非常相似的含义与原理。
+        //换句话说，在特定集合内，只存在其数据不相同的元素。关于集合的运用，可参考如下示例。
+
+        //set-data-type.js
+        let actions = new Set();
+        //此语句声明了初始数据为【空的Set对象实例】的变量actions。
+
+        actions.add('read');
+        //当前变量actions的数据为一个Set对象实例，因此存在可调用的函数add().再变量actions
+        // 的Set对象实例中，添加数据为字符串'read'的新元素。
+        actions.add('write').add('update');
+        //此语句使得在变量actions得set对象实例中，连续添加数据为字符串'write'与'update'的两个新元素。
+        actions.add('delete');
+        actions.add('read').add('read').add('delete').add('write').add('update');
+        //如果添加重复的数据字符串，重复的元素会自动被排除在外。
+        console.log(actions);
+
+        console.log(actions.entries());
+        console.log(actions.keys());
+        console.log(actions.values());
+        //这三个语句皆显示出相同的信息【SetIterator{"read","write","update","delete"}】.其中，SetIterator具有集合迭代器的含义。
+        console.log('');
+
+        for (let element of actions){
+            console.log(element);
+        }
+        //通过循环语句for...of的迭代处理，可在每次循环中，显示出在变量actions的Set对象实例中，
+        //其特定元素的如下数据字符串：
+        // read write update delete
+
+        console.log('');
+        console.log(actions.size);
+        // action.size会返回Set对象实例中的元素个数4
+        console.log(actions.has('hide'));
+        // 返回false,意味着在Set对象实例中，并无数据字符串为'hide'的元素
+        console.log(actions.has('write'));
+
+        //3.6.2 地图类型(es6)
+        //地图(map)内含【键名(key name)对应到值(value)/数据(data)】的组合。地图与对象(object)极为相似，
+        //只是节省了对象的累赘和限制。关于地图的运用，如下：
+        // map-data-type.js
+        let items = new Map();
+        //声明了初始数据为【空的Map对象实例】的变量items.
+        items.set('slipper',50);
+        //变量items的数据，当前为一个Map对象实例，因此存在可调用的函数set().此语句使用在变量
+        //items的Map对象实例中，被添加键名为slipper，值为50的新元素。
+        items.set('shoes',200);
+        items.set('pants',100).set('shirt',150);
+
+        console.log(items);
+
+        console.log(items.size);
+        //items.size会返回Map对象实例中的元素个数4.
+        console.log(items.entries());
+        console.log(items.keys());
+        console.log(items.values());
+
+        for(let [product,price] of items){
+            console.log(`One ${product} consts ${price}.`)
+        }
+        //值得注意的是，在上述循环语句的小括号里，【let [product,price] of items】的语句，使得在每次循环中：
+        //变量product的数据，成为在变量items的Map对象实例中，特定元素的键名，例如slipper.
+        //变量price的数据，成为在变量items的Map对象实例中，特定元素的值，例如50.
+    </script>
+</body>
+</html>

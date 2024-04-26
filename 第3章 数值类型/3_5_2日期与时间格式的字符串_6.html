@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 3.5.3 日期与时间格式的字符串(es6)
+        // 内含日期(data)与时间(time)相关数据的字符串，可被称为日期与时间格式的字符串。
+        // date-and-time-strings.js
+        let dt_cn = new Intl.DateTimeFormat('cn');
+        //Intl.DateTimeFormat对象的构造函数Intl.DateTimeFormat("cn"),会返回中文/中国(cn,China)
+        // 格式的Intl.DateTimeFormat 对象实例。后续源代码可借助变量dt_cn中Intl.DateTimeFormat对象
+        // 实例，将其他格式的日期与时间，表示成为中文格式的日期与时间。
+        let dt_en = new Intl.DateTimeFormat('en');
+        //其他格式的日期和时间改成英文格式的日期和时间。
+        let dt_de = new Intl.DateTimeFormat('de');
+        //其他格式的日期和时间改成德文格式的日期和时间。
+
+        origin_datetime = new Date('2018-01-23');
+        console.log(origin_datetime.toDateString()); 
+        //返回 Tue Jan 23 2018
+        console.log(origin_datetime.toLocaleDateString());
+        //返回 2018/1/23
+        
+        console.log('');
+
+        dt01 = dt_cn.format(origin_datetime);
+        //因为变量dt_cn的数据是Intl.DateTimeFormat对象实例，所以存在可调用的函数format()。
+        //dt_cn.format(origin_datetime)会返回【在变量origin_datetime的Date对象实例中，
+        //其内含的日期与时间，被表示成中文格式】之后的字符串'2018/1/23'。
+        dt02 = dt_en.format(origin_datetime);
+        dt03 = dt_de.format(origin_datetime);
+
+        console.log(dt01);
+        console.log(dt02);
+        console.log(dt03);
+    </script>
+</body>
+</html>

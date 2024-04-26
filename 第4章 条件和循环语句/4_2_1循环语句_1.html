@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //4.2 循环语句
+        //循环语句(loop statement)可用来描述重复执行特定源代码片段的动作。JavaScript语言支持
+        // 的循环语句，主要为for相关语句和while相关语句。
+
+        //4.2.1 for相关语句(es6)
+        //JavaScript语言的for相关语句，可细分如下：
+        //for
+        //for in
+        //for of
+        //在for语句中，关键字of或in的存在与否，会影响其迭代方式：
+        //没有关键字of和in,仅依据特定变量的数据是否符合特定条件，而被进行迭代任务。
+        //存在关键字of,必须根据特定变量的数组实例中的元素个数，而被进行迭代任务。 
+        //存在关键字in,必须根据特定变量的对象实例中的元素个数，而被进行迭代任务。
+        
+        let zm = ['a','b','c','d','e','f']
+
+        let message = '';
+
+        for(let i = 1;i<zm.length+1;i++){
+            message+=`(${i}) ${zm[i-1]}`
+        }
+        console.log(message)
+        console.log('')
+
+        message = ''
+
+        for(let value of zm){
+            message+=`${value}`
+        }
+        console.log(message);
+        console.log('');
+
+        let product = {id:1,name:'Tablet PC',color:'Gold',Price:'1200',OS:'Android'}
+
+        message = ''
+        for(let str in product){
+            message+=`${str} `
+        }
+        console.log(message);
+
+        let a01 = [520,110,32,54,65];
+        let sum = 0;
+
+        for(let num of a01){
+            sum += num;
+            console.log(`current number = ${num}`);
+        }
+
+        console.log('');
+
+        let greetings = 'Hello,world,Solar System,Galaxy.';
+
+        for(let c of greetings){
+            console.log(c);
+        }
+
+        console.log('');
+
+        //通过...args的语法，定义此函数的参数列，使得被传入的各个参数，被压缩成为参数变量
+        //args的数组实例中的各个元素。举例来说，在函数display('what','when','where','which','who')
+        //被调用的情况下，参数变量args的数据，即是数组实例['what','when','where','which','who']
+        function display(...args){
+            for(let arg of args){
+                console.log(arg);
+            }
+            console.log('');
+            //arguments,并且和前述变量args有相同的数据。
+            for(let arg of arguments){
+                console.log(arg)
+            }
+        }
+        display('what','when','where','which','who')
+
+        //此语句用来定义新的生成器函数(generator function),必须在关键字function与函数名称之间，放置
+        //星号【*】
+        function * gen01(){
+            //parseInt(30*Math.random())返回的0~29的随机整数值，赋给变量top_value。每当此语句重新被执行时，变量top_value的数值，都会随机变化。
+            let top_value = parseInt(30*Math.random());
+
+            //在此for语句的每次迭代中，其大括号里的【yield i;】会被执行，使得变量i当前的数值，动态被产生(yield)至最终会被返回的
+            // 迭代器实例中。另外，此示例源代码每次被重新执行时，都会使得上述的迭代器实例，具有不定个数的元素。在上述的迭代器实例中，各个元素的数值皆小于30
+            // 而且相邻元素的数值的差距均为3
+            for(let i = 1;i<top_value;i+=3){
+                yield i;
+            }
+        }
+
+        //此表达式可用来定义具有生成器(generator)特征的变量。语法大致可理解为【let 变量名称 = {*[Symbol.iterator](){...}}】
+        //gen02和gen01的功能相同
+        let gen02 = {
+            * [Symbol.iterator](){
+                let top_value = parseInt(30*Math.random());
+                
+                for (let i = 1;i<top_value;i+=3){
+                    yield i;
+                }
+            }
+        }
+
+        console.log(gen01())
+        //在关键字of的右侧，有生成器函数gen01(),会返回可作为迭代器的新实例
+        for(let num of gen01()){
+            console.log(num)
+        }
+
+        console.log('');
+
+        for(let num of gen02){
+            console.log(num)
+        }
+
+        //若gen01返回的迭代器实例为<1,4,7>,则[...gen01()]等价于[...<1,4,7>],
+        //并且可被简化成为[1,4,7],扩展运算符【...】具有解开迭代器实例的用途。
+        let number_array = [...gen01()];
+
+        console.log(number_array);
+
+        console.log('');
+
+        //定义生成器函数solar_system(),会动态生成【内含太阳系九大行星的中英文名称字符串】的迭代器实例
+        class Planets{
+            * solar_system()
+            {
+                let planet_list = ['水星(Mercury)','金星(Venus)','地球(Earth)','火星(Mars)','木星(Jupiter)'
+                ,'土星(Saturn)','天王星(Uranus)','海王星(Neptune)','冥王星(Pluto)'];
+
+                for(let planet of planet_list){
+                    yield planet;
+                }
+            }
+        }
+        //下面语句声明初始数据为Planets类实例的变量p01
+        p01 = new Planets();
+        let a_copy = [...p01.solar_system()];
+        console.log(a_copy);
+
+        //4.2.2 while相关语句
+        //JavaScript语言的while相关语句，有如下两种。
+        // while(...){
+
+        // }
+
+        // do{
+
+        // } while(...)
+
+        let letter = ['a','b','c','d','e']
+        let product1 = {id:2,name:'ch',color:'blue',Price:'1200',os:'Android'};
+        let message1 = '',count = 1;
+
+        while(count<letter.length+1){
+            message+=`(${count}) ${letter[count - 1]}`;
+            count++;
+        }
+
+        console.log(message);
+        console.log('');
+
+        message1 = '',count = 1;
+        do{
+            message1 += `(${count}) ${letter[count-1]}`;
+            count++;
+        } while(count<letter.length+1);
+        console.log(message);
+    </script>
+</body>
+</html>
